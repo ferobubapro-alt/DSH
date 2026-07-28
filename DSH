@@ -1537,23 +1537,23 @@ end)
 local currentLang = "EN"
 local function UpdateLanguage()
     if currentLang == "TR" then
-        WelcomeTitle.Text = "MM2'yi Bu Yazılımımız İle Domine Et." -- Türkçe istersen burayı değiştir
-        HomeTab.Button.Text = "Ana Menü"
-        FarmTab.Button.Text = "Farm"
-        PlayerTab.Button.Text = "Oyuncu"
-        CombatTab.Button.Text = "Savaş"
-        VisualTab.Button.Text = "Görsel"
-        SettingsTab.Button.Text = "Ayarlar"
-        InventoryTab.Button.Text = "Envanter"
+        WelcomeTitle.Text = "MM2'yi Bu Yazılımımız İle Domine Et."
+        Tabs["Ana Menü"].Button.Text = "Ana Menü"
+        Tabs["Farm"].Button.Text = "Farm"
+        Tabs["Oyuncu"].Button.Text = "Oyuncu"
+        Tabs["Savaş"].Button.Text = "Savaş"
+        Tabs["Görsel"].Button.Text = "Görsel"
+        Tabs["Ayarlar"].Button.Text = "Ayarlar"
+        Tabs["Inventory"].Button.Text = "Envanter"
     else
         WelcomeTitle.Text = "Dominate MM2 With Our Soft-Ware"
-        HomeTab.Button.Text = "Home"
-        FarmTab.Button.Text = "Farm"
-        PlayerTab.Button.Text = "Player"
-        CombatTab.Button.Text = "Combat"
-        VisualTab.Button.Text = "Visual"
-        SettingsTab.Button.Text = "Settings"
-        InventoryTab.Button.Text = "Inventory"
+        Tabs["Ana Menü"].Button.Text = "Home"
+        Tabs["Farm"].Button.Text = "Farm"
+        Tabs["Oyuncu"].Button.Text = "Player"
+        Tabs["Savaş"].Button.Text = "Combat"
+        Tabs["Görsel"].Button.Text = "Visual"
+        Tabs["Ayarlar"].Button.Text = "Settings"
+        Tabs["Inventory"].Button.Text = "Inventory"
     end
 end
 
