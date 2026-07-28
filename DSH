@@ -539,34 +539,6 @@ RunService.RenderStepped:Connect(function()
         FriendVal.Text = hasFriend and "Sunucuda Arkadaş Var" or "Yok"
     end
 end)
--- === ENVANTER (INVENTORY) SEKMESİ ===
-local InvCard = CreateCategoryCard(InventoryTab, "Skin Changer (Client-Side)")
-
-CreateToggle(InvCard, "Chroma Unlocker (Görsel)", "Elindeki silahı sadece sende Chroma yapar.", 2, function(state)
-    if state then
-        Notify("Skin Changer Aktif. Sadece sende görünür!")
-        task.spawn(function()
-            while state and task.wait(0.5) do
-                pcall(function()
-                    local char = LocalPlayer.Character
-                    if char then
-                        for _, tool in pairs(char:GetChildren()) do
-                            if tool:IsA("Tool") and tool:FindFirstChild("Handle") then
-                                local handle = tool.Handle
-                                if handle:IsA("BasePart") then
-                                    handle.Material = Enum.Material.ForceField
-                                    handle.Color = Color3.fromHSV(tick() % 5 / 5, 1, 1) -- Gökkuşağı (Chroma) efekti
-                                end
-                            end
-                        end
-                    end
-                end)
-            end
-        end)
-    else
-        Notify("Skin Changer Kapatıldı.")
-    end
-end)
 -- ==========================================
 -- KART VE WIDGET SİSTEMİ
 -- ==========================================
@@ -1494,13 +1466,43 @@ end)
 CreateToggle(VisualCard, "Tüm Oyuncular (Player ESP)", "Masum: Yeşil, Katil: Kırmızı, Şerif: Mavi", 1, function(state)
     Toggles.PlayerESP = state
 end)
+CreateToggle(VisualCard, "Sadece Şerif (Sheriff ESP)", "Şerifi Mavi renk ile gösterir.", 0, function(state)
+    Toggles.SheriffESP = state
+end)
 CreateToggle(VisualCard, "Sadece Katil (Murderer ESP)", "Katili Kırmızı renk ile gösterir.", 0, function(state)
     Toggles.MurdererESP = state
 end)
 CreateToggle(VisualCard, "Sadece Şerif (Sheriff ESP)", "Şerifi Mavi renk ile gösterir.", 0, function(state)
     Toggles.SheriffESP = state
 end)
+-- === ENVANTER (INVENTORY) SEKMESİ ===
+local InvCard = CreateCategoryCard(InventoryTab, "Skin Changer (Client-Side)")
 
+CreateToggle(InvCard, "Chroma Unlocker (Görsel)", "Elindeki silahı sadece sende Chroma yapar.", 2, function(state)
+    if state then
+        Notify("Skin Changer Aktif. Sadece sende görünür!")
+        task.spawn(function()
+            while state and task.wait(0.5) do
+                pcall(function()
+                    local char = LocalPlayer.Character
+                    if char then
+                        for _, tool in pairs(char:GetChildren()) do
+                            if tool:IsA("Tool") and tool:FindFirstChild("Handle") then
+                                local handle = tool.Handle
+                                if handle:IsA("BasePart") then
+                                    handle.Material = Enum.Material.ForceField
+                                    handle.Color = Color3.fromHSV(tick() % 5 / 5, 1, 1) -- Gökkuşağı (Chroma) efekti
+                                end
+                            end
+                        end
+                    end
+                end)
+            end
+        end)
+    else
+        Notify("Skin Changer Kapatıldı.")
+    end
+end)
 -- === AYARLAR SEKMESİ ===
 local SettingsCard = CreateCategoryCard(SettingsTab, "Arayüz Ayarları (GUI)")
 
